@@ -4,62 +4,169 @@
   <meta charset="UTF-8" />
   <title>AEGIS‑OPS Mission Copilot – Build Tracker</title>
   <style>
-    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 2rem; background: #0f172a; color: #e5e7eb; }
-    h1, h2 { margin-bottom: 0.5rem; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 2rem; background: #020617; color: #e5e7eb; }
+    h1, h2, h3 { margin-bottom: 0.5rem; }
     h1 { color: #38bdf8; }
-    .section { margin-bottom: 1.5rem; padding: 1rem; border-radius: 0.5rem; background: #020617; border: 1px solid #1e293b; }
+    h2 { color: #e5e7eb; margin-top: 0; }
+    h3 { font-size: 0.95rem; color: #cbd5f5; margin-top: 1rem; }
+    .section { margin-bottom: 1.75rem; padding: 1rem 1.25rem; border-radius: 0.75rem; background: #020617; border: 1px solid #1f2937; }
     .tagline { font-size: 0.95rem; color: #9ca3af; margin-bottom: 1rem; }
-    ul { list-style: none; padding-left: 0; }
-    li { margin: 0.35rem 0; }
-    input[type="checkbox"] { margin-right: 0.5rem; }
-    .pill { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 0.75rem; margin-left: 0.25rem; }
+    ul { list-style: none; padding-left: 0; margin: 0.25rem 0 0.5rem 0; }
+    li { margin: 0.25rem 0; }
+    label { cursor: pointer; }
+    input[type="checkbox"] { margin-right: 0.5rem; vertical-align: middle; }
+    code { background: #0b1120; padding: 0.05rem 0.3rem; border-radius: 0.25rem; }
+    .pill { display: inline-block; padding: 0.15rem 0.6rem; border-radius: 999px; font-size: 0.75rem; margin-left: 0.35rem; }
     .pill-eta { background: #0369a1; color: #e0f2fe; }
-    .pill-done { background: #14532d; color: #bbf7d0; }
+    .pill-phase { background: #4b5563; color: #e5e7eb; }
     .pill-next { background: #854d0e; color: #fffbeb; }
     .notes { width: 100%; min-height: 6rem; margin-top: 0.5rem; border-radius: 0.5rem; border: 1px solid #1f2933; padding: 0.5rem; background: #020617; color: #e5e7eb; }
     .small { font-size: 0.8rem; color: #9ca3af; }
+    .today-input { width: 100%; border-radius: 0.5rem; border: 1px solid #1f2933; padding: 0.4rem 0.6rem; background: #020617; color: #e5e7eb; margin-top: 0.4rem; }
   </style>
 </head>
 <body>
   <h1>AEGIS‑OPS Mission Copilot</h1>
   <div class="tagline">
-    Build tracker for a defense‑flavored Azure AI support copilot (Azure OpenAI + AI Search + App Service + CI/CD).
+    Detailed build tracker for a defense‑flavored Azure AI support copilot (Azure OpenAI + AI Search + App Service + CI/CD).
   </div>
 
+  <!-- DAILY FOCUS -->
   <div class="section">
-    <h2>Today&apos;s Focus <span class="pill pill-next">pick 1–2 only</span></h2>
+    <h2>Today&apos;s Focus <span class="pill pill-next">pick 1–3 only</span></h2>
+    <input class="today-input" placeholder="Example: Finish SOP schema + scaffold API project + commit infra skeleton" />
+    <h3>Micro‑tasks</h3>
     <ul>
-      <li><label><input type="checkbox" /> Initialize repo &amp; basic folder layout</label></li>
-      <li><label><input type="checkbox" /> Draft synthetic SOP schema (YAML/JSON)</label></li>
-      <li><label><input type="checkbox" /> Scaffold API project (Node/Python)</label></li>
-      <li><label><input type="checkbox" /> Write first synthetic AEGIS‑OPS SOP</label></li>
+      <li><label><input type="checkbox" /> 25 minutes: work only on <strong>data schema</strong> (no infra, no UI)</label></li>
+      <li><label><input type="checkbox" /> 25 minutes: implement one API endpoint end‑to‑end</label></li>
+      <li><label><input type="checkbox" /> 10 minutes: update README with what changed</label></li>
+      <li><label><input type="checkbox" /> 5 minutes: end‑of‑session debrief in Notes section</label></li>
     </ul>
   </div>
 
+  <!-- PHASE 1: REPO & ARCH -->
   <div class="section">
-    <h2>Phase 1 – Skeleton <span class="pill pill-eta">~1–2 days</span></h2>
+    <h2>Phase 1 – Repo & Architecture <span class="pill pill-phase">PLAN</span><span class="pill pill-eta">~4–6 hrs</span></h2>
+
+    <h3>1.1 Repo & layout</h3>
     <ul>
       <li><label><input type="checkbox" /> Create repo: <code>aegis-ops-mission-copilot</code></label></li>
-      <li><label><input type="checkbox" /> Add <code>/infra</code>, <code>/api</code>, <code>/web</code>, <code>/data/sops</code> folders</label></li>
-      <li><label><input type="checkbox" /> tracker.html committed &amp; opened daily</label></li>
-      <li><label><input type="checkbox" /> High‑level architecture sketch (in README or PNG)</label></li>
+      <li><label><input type="checkbox" /> Add base folders: <code>/infra</code>, <code>/api</code>, <code>/web</code>, <code>/data/sops</code>, <code>/data/incidents</code></label></li>
+      <li><label><input type="checkbox" /> Place <code>tracker.html</code> at repo root and commit it</label></li>
+      <li><label><input type="checkbox" /> Add <code>README.md</code> with 1‑paragraph project description</label></li>
     </ul>
-  </div>
 
-  <div class="section">
-    <h2>Phase 2 – Data & AI</h2>
+    <h3>1.2 Architecture sketch</h3>
     <ul>
-      <li><label><input type="checkbox" /> Design SOP / incident JSON schema</label></li>
-      <li><label><input type="checkbox" /> Create 3–5 synthetic AEGIS‑OPS SOPs</label></li>
-      <li><label><input type="checkbox" /> Stand up Azure AI Search index (locally as TODO)</label></li>
-      <li><label><input type="checkbox" /> Define Azure OpenAI system prompt &amp; tools (search_sops, search_incidents)</label></li>
+      <li><label><input type="checkbox" /> Write bullet list of planned Azure services in README (OpenAI, AI Search, Storage, App Service, App Insights)</label></li>
+      <li><label><input type="checkbox" /> Add simple text architecture diagram (ASCII or markdown list) in README</label></li>
+      <li><label><input type="checkbox" /> Define 2 personas: <code>FieldEngineer</code>, <code>CloudSRE</code> and list their top 3 questions</label></li>
     </ul>
   </div>
 
+  <!-- PHASE 2: DATA MODEL & SAMPLE DOCS -->
+  <div class="section">
+    <h2>Phase 2 – Data Model & Sample SOPs <span class="pill pill-phase">DATA</span><span class="pill pill-eta">~4–6 hrs</span></h2>
+
+    <h3>2.1 Schema design</h3>
+    <ul>
+      <li><label><input type="checkbox" /> Create <code>/data/schema/sop.schema.json</code> with fields (id, title, system_id, subsystem, severity, environment, phase, steps[])</label></li>
+      <li><label><input type="checkbox" /> Create <code>/data/schema/incident.schema.json</code> with fields (id, system_id, symptoms, root_cause, phase, environment)</label></li>
+      <li><label><input type="checkbox" /> Document schemas in README (short table or bullet list)</label></li>
+    </ul>
+
+    <h3>2.2 Synthetic documents</h3>
+    <ul>
+      <li><label><input type="checkbox" /> Write 3 synthetic AEGIS‑OPS SOPs in <code>/data/sops</code></label></li>
+      <li><label><input type="checkbox" /> Write 3 synthetic incidents/AARs in <code>/data/incidents</code></label></li>
+      <li><label><input type="checkbox" /> Ensure each SOP references at least one incident (via <code>related_incident_ids</code>)</label></li>
+      <li><label><input type="checkbox" /> Create a short <code>DATA_NOTES.md</code> describing that all content is synthetic</label></li>
+    </ul>
+  </div>
+
+  <!-- PHASE 3: API SKELETON -->
+  <div class="section">
+    <h2>Phase 3 – API Skeleton <span class="pill pill-phase">BACKEND</span><span class="pill pill-eta">~6–8 hrs</span></h2>
+
+    <h3>3.1 Project setup</h3>
+    <ul>
+      <li><label><input type="checkbox" /> Initialize Node.js / TypeScript API in <code>/api</code> (or Python FastAPI if preferred)</label></li>
+      <li><label><input type="checkbox" /> Add basic health endpoint <code>GET /health</code></label></li>
+      <li><label><input type="checkbox" /> Add linting/formatting (ESLint + Prettier or equivalent)</label></li>
+    </ul>
+
+    <h3>3.2 Core endpoints (stubbed)</h3>
+    <ul>
+      <li><label><input type="checkbox" /> Stub <code>POST /chat</code> returning a static JSON response</label></li>
+      <li><label><input type="checkbox" /> Stub <code>GET /sops</code> loading JSON from <code>/data/sops</code></label></li>
+      <li><label><input type="checkbox" /> Stub <code>GET /incidents</code> loading JSON from <code>/data/incidents</code></label></li>
+      <li><label><input type="checkbox" /> Add simple logging (request path + status code)</label></li>
+    </ul>
+  </div>
+
+  <!-- PHASE 4: AZURE INTEGRATION -->
+  <div class="section">
+    <h2>Phase 4 – Azure Integration (Search + OpenAI) <span class="pill pill-phase">AI</span><span class="pill pill-eta">~8–10 hrs</span></h2>
+
+    <h3>4.1 Azure resources (plan)</h3>
+    <ul>
+      <li><label><input type="checkbox" /> Define Bicep/Terraform for Storage account + AI Search + App Service</label></li>
+      <li><label><input type="checkbox" /> Add placeholders for Azure OpenAI and App Insights in infra files</label></li>
+      <li><label><input type="checkbox" /> Document resource names & regions in README</label></li>
+    </ul>
+
+    <h3>4.2 AI Search + OpenAI wiring (local dev first)</h3>
+    <ul>
+      <li><label><input type="checkbox" /> Define AI Search index fields matching SOP schema</label></li>
+      <li><label><input type="checkbox" /> Write a small script or Function to push sample SOPs into the index</label></li>
+      <li><label><input type="checkbox" /> Implement <code>searchSops(query, filters)</code> helper in the API</label></li>
+      <li><label><input type="checkbox" /> Implement Azure OpenAI client and a basic RAG flow in <code>POST /chat</code></label></li>
+    </ul>
+  </div>
+
+  <!-- PHASE 5: WEB UI -->
+  <div class="section">
+    <h2>Phase 5 – Web UI (Portal + Console) <span class="pill pill-phase">FRONTEND</span><span class="pill pill-eta">~6–8 hrs</span></h2>
+
+    <h3>5.1 Scaffold UI</h3>
+    <ul>
+      <li><label><input type="checkbox" /> Initialize React/Vite app in <code>/web</code></label></li>
+      <li><label><input type="checkbox" /> Create basic layout: header + main + sidebar</label></li>
+      <li><label><input type="checkbox" /> Implement chat component calling <code>/chat</code></label></li>
+    </ul>
+
+    <h3>5.2 Role‑aware views</h3>
+    <ul>
+      <li><label><input type="checkbox" /> Add simple persona switcher (FieldEngineer / CloudSRE)</label></li>
+      <li><label><input type="checkbox" /> Display citations panel (which SOPs/incidents were used)</label></li>
+      <li><label><input type="checkbox" /> Add basic “Runbook steps” view rendering steps as a checklist</label></li>
+    </ul>
+  </div>
+
+  <!-- PHASE 6: CI/CD & POLISH -->
+  <div class="section">
+    <h2>Phase 6 – CI/CD, Telemetry & Polish <span class="pill pill-phase">SHIP</span><span class="pill pill-eta">~4–6 hrs</span></h2>
+
+    <h3>6.1 CI/CD</h3>
+    <ul>
+      <li><label><input type="checkbox" /> Add GitHub Actions workflow to build/test API on push</label></li>
+      <li><label><input type="checkbox" /> Extend workflow to deploy API to Azure App Service / Container Apps</label></li>
+      <li><label><input type="checkbox" /> Add step to build and deploy web app</label></li>
+    </ul>
+
+    <h3>6.2 Observability & README</h3>
+    <ul>
+      <li><label><input type="checkbox" /> Enable Application Insights for API and log <code>/chat</code> usage</label></li>
+      <li><label><input type="checkbox" /> Add “Architecture” and “How this maps to Azure reference patterns” sections to README</label></li>
+      <li><label><input type="checkbox" /> Add “Business outcomes this enables” examples to README</label></li>
+    </ul>
+  </div>
+
+  <!-- NOTES -->
   <div class="section">
     <h2>Notes / Debrief</h2>
     <textarea class="notes" placeholder="End of session: what did I finish, what&apos;s next?"></textarea>
-    <div class="small">Tip: Spend 2 minutes here before closing VS Code.</div>
+    <div class="small">Tip: At the end of each coding block, check off items and write 2–3 bullet points here.</div>
   </div>
 </body>
 </html>
